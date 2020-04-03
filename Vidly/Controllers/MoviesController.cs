@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -17,12 +18,19 @@ namespace Vidly.Controllers
                 Name = "Shrek!"
             };
 
-            // ViewData["RandomMovie"] = movie;
-            // ViewBag.RandomMovie = movie;
-            // var viewResult = new ViewResult();
-            // viewResult.ViewData.Model = movie;
+            var customers = new List<Customer>
+            {
+                new Customer { Name = "Customer 1" },
+                new Customer { Name = "Customer 2" }
+            };
 
-            return View(movie);
+            var viewModel = new RandomMovieViewModel
+            {
+                Movie = movie,
+                Customers = customers
+            };
+
+            return View(viewModel);
         }
 
         [Route("movies/release/{year}/{month:regex(\\d{4}):range(1,12)}")]
