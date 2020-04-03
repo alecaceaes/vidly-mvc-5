@@ -5,7 +5,7 @@
 
 <h2>New Rental</h2>
 
-<form>
+<form id="newRental">
     <div class="form-group">
         <label>Customer</label>
         <div class="tt-container">
@@ -73,6 +73,19 @@
                 $("#movie").typeahead("val", "");
                 vm.movieIds.push(movie.id);
             });
+
+            $("#newRental").submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: "/api/newRentals",
+                    method: "POST",
+                    data: vm
+                }).done(function () {
+                    console.log("done");
+                }).fail(function () {
+
+                })
+            })
         })
     </script>
 } 
