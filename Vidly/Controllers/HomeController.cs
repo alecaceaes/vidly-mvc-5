@@ -9,8 +9,6 @@ namespace Vidly.Controllers
     [AllowAnonymous]
     public class HomeController : Controller
     {
-        //[OutputCache(Duration = 50, Location = OutputCacheLocation.Server, VaryByParam = "genre")]
-        [OutputCache(Duration = 0, VaryByParam = "*", NoStore = true)]
         public ActionResult Index()
         {
             return View();
